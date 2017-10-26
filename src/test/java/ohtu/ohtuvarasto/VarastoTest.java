@@ -93,5 +93,4 @@ public class VarastoTest {
     public void teksti() {
         assertEquals("saldo = 0.0, vielä tilaa 10.0", varasto.toString());
     }
-
 }
