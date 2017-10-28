@@ -1,3 +1,4 @@
+package ohtuesimerkki;
 
 import ohtuesimerkki.Reader;
 import ohtuesimerkki.Statistics;
@@ -5,7 +6,9 @@ import ohtuesimerkki.Statistics;
 import java.util.ArrayList;
 import java.util.List;
 import ohtuesimerkki.Player;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
+import org.junit.Test;
 
 public class StatisticsTest {
 
@@ -30,5 +33,28 @@ public class StatisticsTest {
     public void setUp(){
         // luodaan Statistics-olio joka käyttää "stubia"
         stats = new Statistics(readerStub);
+    }
+
+    @Test
+    public void searchTest() {
+        assertEquals("Kurri", stats.search("Kurri").getName());
+        assertEquals(53, stats.search("Kurri").getAssists());
+        assertEquals(37, stats.search("Kurri").getGoals());
+        assertEquals(90, stats.search("Kurri").getPoints());
+        assertEquals("EDM", stats.search("Kurri").getTeam());
+        assertEquals(null, stats.search("null"));
+    }
+
+    @Test
+    public void teamTest() {
+        assertEquals(3, stats.team("EDM").size());
+        assertEquals(0, stats.team("null").size());
+    }
+
+    @Test
+    public void topScorersTest() {
+        assertEquals(4, stats.topScorers(3).size());
+        assertEquals(1, stats.topScorers(0).size());
+        assertEquals(0, stats.topScorers(-1).size());
     }
 }
