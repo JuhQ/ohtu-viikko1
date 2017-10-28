@@ -4,5 +4,4 @@ build/
 
 gradle.properties
 
-/JavaApplication6/nbproject/private/
-/JavaApplication6/dist/
+/.nb-gradle/
